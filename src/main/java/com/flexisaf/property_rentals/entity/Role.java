@@ -1,15 +1,13 @@
 package com.flexisaf.property_rentals.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Getter
 @Setter
 public class Role {
@@ -17,6 +15,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-
+    
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 }
